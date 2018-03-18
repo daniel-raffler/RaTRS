@@ -5,4 +5,4 @@ Partial implementation of the resource analysis from [Multivariate Amortised Res
 * stack build
 * stack test
 * stack haddock --open
-* stack eval trs
+* stack exec trs
