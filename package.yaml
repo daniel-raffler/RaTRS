@@ -1,0 +1,58 @@
+name:       RaTRS
+version:    "17"
+author:     Daniel Raffler
+maintainer: daniel-raffler@gmx.de
+license:    GPL-3
+
+extra-source-files:
+  - LICENSE
+
+default-extensions:
+  - OverloadedStrings
+  - LambdaCase
+  - NoImplicitPrelude
+
+dependencies:
+  - base
+  - containers
+  - bifunctors
+  - protolude
+  - text
+  - wl-pprint-text
+  - tasty
+  - tasty-quickcheck
+  - directory
+  - optparse-applicative
+  - Earley
+  - graphviz
+  - fgl
+  - sparse-linear-algebra
+
+source-dirs: src
+
+library:
+  exposed-modules:
+    - Core
+    - Core.Data.Rewrite
+    - Core.Data.Grammar
+    - Core.Data.Program
+    - Core.Data.Automata
+    - Core.Data.Types
+    - Core.Data.Symbol
+    - Core.Semiring.Nat
+    - Core.Parse
+    - Core.Run
+
+executables:
+  trs:
+    main: App/Main.hs
+    ghc-options: -main-is App.Main
+    dependencies:
+      - RaTRS
+
+tests:
+  tasty:
+    main: Tasty/Main.hs
+    ghc-options: -main-is Tasty.Main
+    dependencies:
+      - RaTRS

@@ -1,0 +1,14 @@
+type   Nat  = 0  | S(Nat)
+type α List = [] | α::List
+
+  0  + y = y
+S(x) + y = S(x + y)
+
+  0  * y = 0
+S(x) * y = y + (x * y)
+
+mult(n, []   ) = []
+mult(n, x::xs) = (n*x)::mult(n,xs)
+
+dyade([],    ls) = []
+dyade(x::xs, ls) = mult(x,ls)::dyade(xs,ls)

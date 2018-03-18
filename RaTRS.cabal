@@ -1,0 +1,149 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: de1e88087a52c2a0295404b095bc64862d411077bca18fd2fc36fe9730132366
+
+name:           RaTRS
+version:        17
+author:         Daniel Raffler
+maintainer:     daniel-raffler@gmx.de
+license:        GPL-3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    LICENSE
+
+library
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings LambdaCase NoImplicitPrelude
+  build-depends:
+      Earley
+    , base
+    , bifunctors
+    , containers
+    , directory
+    , fgl
+    , graphviz
+    , optparse-applicative
+    , protolude
+    , sparse-linear-algebra
+    , tasty
+    , tasty-quickcheck
+    , text
+    , wl-pprint-text
+  exposed-modules:
+      Core
+      Core.Data.Rewrite
+      Core.Data.Grammar
+      Core.Data.Program
+      Core.Data.Automata
+      Core.Data.Types
+      Core.Data.Symbol
+      Core.Semiring.Nat
+      Core.Parse
+      Core.Run
+  other-modules:
+      App.Main
+      Core.Data.Matrix
+      Core.Data.Rules
+      Core.Type
+      Pre
+      Tasty.Automata
+      Tasty.Eval
+      Tasty.Main
+      Tasty.Type
+      Paths_RaTRS
+  default-language: Haskell2010
+
+executable trs
+  main-is: App/Main.hs
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings LambdaCase NoImplicitPrelude
+  ghc-options: -main-is App.Main
+  build-depends:
+      Earley
+    , RaTRS
+    , base
+    , bifunctors
+    , containers
+    , directory
+    , fgl
+    , graphviz
+    , optparse-applicative
+    , protolude
+    , sparse-linear-algebra
+    , tasty
+    , tasty-quickcheck
+    , text
+    , wl-pprint-text
+  other-modules:
+      Core
+      Core.Data.Automata
+      Core.Data.Grammar
+      Core.Data.Matrix
+      Core.Data.Program
+      Core.Data.Rewrite
+      Core.Data.Rules
+      Core.Data.Symbol
+      Core.Data.Types
+      Core.Parse
+      Core.Run
+      Core.Semiring.Nat
+      Core.Type
+      Pre
+      Tasty.Automata
+      Tasty.Eval
+      Tasty.Main
+      Tasty.Type
+      Paths_RaTRS
+  default-language: Haskell2010
+
+test-suite tasty
+  type: exitcode-stdio-1.0
+  main-is: Tasty/Main.hs
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings LambdaCase NoImplicitPrelude
+  ghc-options: -main-is Tasty.Main
+  build-depends:
+      Earley
+    , RaTRS
+    , base
+    , bifunctors
+    , containers
+    , directory
+    , fgl
+    , graphviz
+    , optparse-applicative
+    , protolude
+    , sparse-linear-algebra
+    , tasty
+    , tasty-quickcheck
+    , text
+    , wl-pprint-text
+  other-modules:
+      App.Main
+      Core
+      Core.Data.Automata
+      Core.Data.Grammar
+      Core.Data.Matrix
+      Core.Data.Program
+      Core.Data.Rewrite
+      Core.Data.Rules
+      Core.Data.Symbol
+      Core.Data.Types
+      Core.Parse
+      Core.Run
+      Core.Semiring.Nat
+      Core.Type
+      Pre
+      Tasty.Automata
+      Tasty.Eval
+      Tasty.Type
+      Paths_RaTRS
+  default-language: Haskell2010

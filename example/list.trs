@@ -1,0 +1,7 @@
+type α List = [] | α::List
+
+copy([]  ) = []
+copy(h::t) = h::copy(t)
+
+append([],  m) = m
+append(h::t,m) = h::append(t,m)
