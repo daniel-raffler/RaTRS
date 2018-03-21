@@ -80,7 +80,7 @@ ordered (Grammar prods) =
     comp | all (not . cycle) comp ->
              map (label . left) $ concat comp
          | otherwise ->
-             error $ pshow $
+             panic $ pshow $
                textStrict "mutually recursive types are not supported" <$$>
                  hsep (punctuate comma $
                          map (textStrict . label . left) $ List.head $ filter cycle comp

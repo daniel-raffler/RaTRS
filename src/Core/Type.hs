@@ -216,7 +216,7 @@ solve =
       reduce av =
         \case Equal t1 t2 ->
                 case runExcept (unify t1 t2) of
-                  Left  m -> error $ pshow m
+                  Left  m -> panic $ pshow m
                   Right s -> return $ Just s
               Instantiate   t1 t2 -> reduce av =<< map (Equal t1) (instantiate t2)
               Generalize bv t1 t2

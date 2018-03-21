@@ -46,7 +46,7 @@ eval (gr, Program modules types) =
             build =
               case catMaybes $ map unified rules of
                 [rw]   -> rw
-                others -> error $ pshow (
+                others -> panic $ pshow (
                   textStrict "No matching rule found while evaluating the program" <>
                     colon <$$> pretty p
                   )

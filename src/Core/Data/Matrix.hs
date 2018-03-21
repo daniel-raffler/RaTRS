@@ -97,7 +97,7 @@ type Dim = (Int,Int)
 checked :: (Num a, Pretty a)
         => Text -> (Dim -> Dim -> Bool) -> SpMatrix a -> SpMatrix a -> e -> e
 checked m fx u v id | on fx dim u v = id
-                    | otherwise     = error $ pshow (
+                    | otherwise     = panic $ pshow (
                         textStrict "Could not" <+> textStrict m <+>
                           textStrict "matrices, dimensions are incompatible" <$$>
                           on parallel pretty u v)
@@ -239,7 +239,7 @@ echelon' = fromRowsL . reverse . reduce' . reverse . toRowsL . echelon
 
 -- | Inverse matrix
 inverse :: (Pretty a, Ord a, Num a, Fractional a) => SpMatrix a -> SpMatrix a
-inverse m | ncols m /= nrows m = error "Can't invert rectangular matrix"
+inverse m | ncols m /= nrows m = panic "Can't invert rectangular matrix"
           | otherwise          =
   let -- | Combine two matrices into an extended matrix
       extend :: SpMatrix a -> SpMatrix a -> SpMatrix a
@@ -265,7 +265,7 @@ inverse m | ncols m /= nrows m = error "Can't invert rectangular matrix"
       -- | Reduce matrix to turn extended matrix into its inverse
       reduce :: (Pretty a, Ord a, Num a, Fractional a) => SpMatrix a -> SpMatrix a
       reduce m | on (/=) sparsify e (eye $ nrows m) =
-                   error ("Could not invert singular matrix\n" <> pshow m)
+                   panic ("Could not invert singular matrix\n" <> pshow m)
                | otherwise          = u
         where (e,u) = separate (ncols m) $ echelon' $ extend m $ eye (nrows m)
       

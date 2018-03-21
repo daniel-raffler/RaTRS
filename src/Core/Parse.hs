@@ -257,5 +257,5 @@ runParser input = fullParses (parser grammar) input &
 parseFile :: FilePath -> IO (Grammar, Module)
 parseFile p = readFile p >>= \i ->
   runExcept (runParser =<< runLexer i) &
-    \case (Left  e) -> error e
+    \case (Left  e) -> panic e
           (Right v) -> return v
